@@ -1,11 +1,11 @@
-
+import Roots from '../assets/Roots.jpg'
 
 const HomePost = () => {
   return (
     <div className="w-full flex mt-8 space-x-4">
         {/* left */}
         <div className="w-[35%] h-[200px] flex justify-center items-center">
-            <img src="C:\Users\dilip\Downloads\Roots.jpg" alt="" className="h-full w-full object-cover" />
+            <img src={Roots} alt="" className="h-full w-full object-cover" />
 
         </div>
         {/* right */}

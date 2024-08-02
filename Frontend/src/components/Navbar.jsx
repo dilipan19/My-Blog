@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom"
-import {BsSearch} from 'react-icons/bs'
+import { Link } from "react-router-dom";
+import {BsSearch} from 'react-icons/bs';
+
 
 
 const Navbar = () => {
-    const user=true
+
+    const user=false
   return (
     <div className="flex items-center justify-between px-6 md:px-[200px] py-4">
-    <h1 className="margin-top: 5 font-extrabold "><Link to="/">My Blog</Link></h1>
+    <h1 className="margin-top: 5 font-bold"><Link to="/">My Blog</Link></h1>
     <div className="flex justify-center items-center space-x-0">
           <p><BsSearch/></p>
         <input className="outline-none px-3 " placeholder="Search" type="text"/>
