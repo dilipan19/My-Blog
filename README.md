@@ -163,4 +163,3 @@ This project is licensed under the MIT License.
 
 ---
 
-Feel free to modify the `README.md` as per your project's specifics.
