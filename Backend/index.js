@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv=require('dotenv');
-const authRoute = require('./routes/auth')
+const cors = require('cors');
+const authRoute = require('./routes/auth');
+const postRoute = require('./routes/post');
 
 //database
 const connectDB=async()=>{
@@ -16,7 +18,10 @@ const connectDB=async()=>{
 //Middlewares
 app.use(express.json());
 dotenv.config();
+app.use(cors());
 app.use("/api",authRoute);
+app.use("/api",postRoute);
+
 
 
 app.listen(process.env.PORT,()=>{
