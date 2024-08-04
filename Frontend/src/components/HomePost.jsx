@@ -24,6 +24,8 @@ const HomePost = () => {
 
         </div>
 
+        
+
     </div>
   )
 }
