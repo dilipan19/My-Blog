@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
     <Navbar/>
-     <div className="px-8 md:px-[200px]  bg-yellow-600 ">
+     <div className="px-8 md:px-[200px]  bg-yellow-600 py-4  ">
         <HomePost/>
         <HomePost/>
         <HomePost/>

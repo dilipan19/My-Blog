@@ -13,7 +13,7 @@ const Navbar = () => {
       <span className="px-2 py-1 text-black font-bold bg-yellow-600">Blog </span></Link></h1>
     <div className="flex justify-center items-center space-x-0  ">
           <p><BsSearch/></p>
-        <input className="outline-none px-3  " placeholder="Search..." type="text"/>
+        <input className="outline-none px-3 py-1  " placeholder="Search..." type="text"/>
 
     </div>
     

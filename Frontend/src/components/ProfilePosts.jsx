@@ -1,9 +1,8 @@
 import Roots from '../assets/Roots.jpg'
 
-const HomePost = () => {
+const ProfilePosts = () => {
   return (
-   
- <div className="w-full flex mt-8 space-x-4">
+    <div className="w-full flex mt-8 space-x-4">
         {/* left */}
         <div className="w-[35%] h-[200px] flex justify-center items-center ">
             <img src={Roots} alt="" className="h-full w-full object-cover" />
@@ -30,4 +29,4 @@ const HomePost = () => {
   )
 }
 
-export default HomePost
+export default ProfilePosts
