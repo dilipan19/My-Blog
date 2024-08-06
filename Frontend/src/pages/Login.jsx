@@ -12,7 +12,7 @@ const Login = () => {
 
 const handleLogin=async () => {
   try{
-    const res=await axios.post(URL+"/api/auth/login",{username,password})
+    const res=await axios.post(URL+"/api/login",{username,password})
     //console.log(res.data)
     navigate("/")
   }

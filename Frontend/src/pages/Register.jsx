@@ -14,7 +14,7 @@ const Register = () => {
   const handleRegister=async ()=> {
     
     try{
-     const res=axios.post(URL + "/api/auth/register", {username,password})
+     const res=axios.post(URL + "/api/register", {username,password})
      setUsername(res.data.username)
      setPassword( res.data.password)
      setError(false)
