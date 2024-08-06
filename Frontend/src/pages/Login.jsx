@@ -1,19 +1,22 @@
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { URL } from "../url";
+import { UserContext } from "../context/UserContext";
 
 const Login = () => {
   const [username, setUsername]=useState("")
   const [password, setPassword]=useState("")
   const [error, setError]=useState(false)
+  const {setUser}=useContext(UserContext)
   const navigate=useNavigate()
 
 const handleLogin=async () => {
   try{
-    const res=await axios.post(URL+"/api/auth/login",{username,password})
+    const res=await axios.post(URL+"/api/auth/login",{username,password},{withCredentials:true})
     //console.log(res.data)
+    setUser(res.data)
     navigate("/")
   }
   catch(err){

@@ -21,7 +21,7 @@ const HomePost = () => {
                    <p>07:29</p>
                 </div>
             </div>
-            <p className="text-sm md:text-lg"> It tells the story of Kunta Kinte, an 18th-century Mandinka, captured as an adolescent, sold into slavery in Africa, and transported to North America , how the life of the peoples went and how they succeeded. </p>
+            <p className="text-sm md:text-lg">  It tells the story of Kunta Kinte, an 18th-century Mandinka, captured as an adolescent, sold into slavery in Africa, and transported to North America , how the life of the peoples went and how they succeeded </p>
 
         </div>
         

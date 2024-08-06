@@ -8,7 +8,7 @@ const Register = () => {
 
   const [username, setUsername]=useState ("")
   const [password, setPassword]=useState("")
-  const [error, setError]=useState("false")
+  const [error, setError]=useState(false)
   const navigate=useNavigate()
 
   const handleRegister=async ()=> {
