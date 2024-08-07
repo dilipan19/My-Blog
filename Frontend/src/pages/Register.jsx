@@ -14,9 +14,9 @@ const Register = () => {
   const handleRegister=async ()=> {
     
     try{
-     const res=axios.post(URL + "/api/register", {username,password})
+     const res=await axios.post(URL + "/api/register", {username,password})
      setUsername(res.data.username)
-     setPassword( res.data.password)
+     setPassword(res.data.password)
      setError(false)
      navigate("/login")
      
@@ -43,7 +43,7 @@ const Register = () => {
         <button onClick={handleRegister}  className="w-full px-2 py-2 text-lg font-semibold text-white bg-black rounded-lg hover:bg-gray-500 hover:text-black">Register</button>
         {error && <h3 className='text-red-500 text-sm'>Something went wrong</h3>}
         <div className="flex justify-center items-center space-x-3 font-semibold text-white">
-            <p>Already Registered? </p>
+            <p>Already have an account? </p>
             <p className="text-gray-500 hover:text-white "><Link to="/login">Login</Link></p>
             </div>
         </div>
