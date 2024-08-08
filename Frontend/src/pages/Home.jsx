@@ -16,14 +16,17 @@ const Home = () => {
 
   const [posts, setPosts]=useState([])
   const [noResults,setNoResults]=useState(false)
-  const [loader, setLoader]=useState(false)
+  const [loader, setLoader]=useState(true)
   const {user}=useContext(UserContext)
   //console.log(user)
+  console.log(posts,"sd");
+  
 
   const fetchPosts=async()=>{
     setLoader(true)
     try{
-      const res=await axios.get(URL+"/api/posts/"+search)
+      
+      const res=await axios.get(URL+"/api/posts")
       //console.log(res.data)
       setPosts(res.data)
       if(res.data.length){
@@ -47,20 +50,24 @@ const Home = () => {
 
   return (
     <>
+    <div className="bg-yellow-600">
     <Navbar/>
-     <div className="px-8 md:px-[200px]  bg-yellow-600 py-4  min-h-[80vh]  ">
-        {loader?<div className="h-[40vh] flex justify-center items-center"><Loader/></div>:!noResults ?
+     <div className="px-8 md:px-[200px]  bg-yellow-600 py-4  min-h-[100vh]  ">
+        {
          posts.map((post)=>(
           <>
-          <Link to={user?`/posts/post/${post._id}`:"/login"}>
+          <Link to={`/posts/post/${post._id}`}>
              <HomePost key={post._id} post={post}/>
           </Link>
           </>
          
          
-        )):<h3 className="text-center font-bold mt-16">No post available</h3>}
+        ))}
     </div>
-    <Footer/>
+        <Footer/>
+        
+    </div>
+   
     </>
    
   )

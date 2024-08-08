@@ -46,10 +46,10 @@ const MyBlogs = () => {
   },[search])
 
   return (
-    <div>
+    <div className="bg-yellow-600">
         <Navbar/>
         <div className="px-8 md:px-[200px] min-h-[80vh]">
-        {loader?<div className="h-[40vh] flex justify-center items-center"><Loader/></div>:!noResults?
+        {!loader?<div className="h-[40vh] flex justify-center items-center"><Loader/></div> : noResults?
         posts.map((post)=>(
           <>
           <Link to={user?`/posts/post/${post._id}`:"/login"}>

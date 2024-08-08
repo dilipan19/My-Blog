@@ -31,9 +31,12 @@ const Register = () => {
 
   return (
     <>
-     <div className="flex items-center justify-between px-6 md:px-[200px] py-4 font-bold bg-yellow-600">
-    <h1 className="margin-top: 5 font-bold"><Link to="/">My Blog</Link></h1>
-    <h3><Link to="/login">Login</Link></h3>
+     
+     <div  className="flex items-center justify-between px-6 md:px-[200px] py-4 font-bold bg-black  " > 
+    <h1 className="flex items-center font-bold  "><Link to="/" className="flex items-center">
+      <span className="px-2 py-1 text-white bg-black ">My </span>   
+      <span className="px-2 py-1 text-black font-bold bg-yellow-600">Blog </span></Link></h1>
+      <h3><Link to="/login" className="text-white">Login</Link></h3> 
      </div>
      <div className="w-full flex justify-center items-center h-[80vh] bg-yellow-600 ">
     <div className="flex flex-col justify-center items-center space-y-4 w-[80%] md:w-[25%]  bg-black p-6 rounded-lg shadow-lg ">
@@ -51,7 +54,7 @@ const Register = () => {
     <div className='p-9 bg-yellow-600'>
 
     </div>
-    <Footer/>
+    
     </>
    
   )
