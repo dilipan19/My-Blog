@@ -75,7 +75,7 @@ const CreatePost = () => {
             onChange={(e) => setTitle(e.target.value)}
             type="text"
             placeholder="Enter title"
-            className="px-2 py-2 outline-none bg-black rounded text-white"
+            className="px-2 py-2 outline-none bg-black rounded-lg text-white"
           />
         </form>
       </div>
@@ -83,13 +83,13 @@ const CreatePost = () => {
         onChange={(e) => setContent(e.target.value)}
         rows={10}
         cols={60}
-        className="px-4 py-2 outline-none mt-5 mx-48 bg-black text-white rounded"
+        className="px-4 py-2 outline-none mt-5 mx-48 bg-black text-white rounded-xl"
         placeholder="Enter post description"
       />
       
       <button
         onClick={handleCreate}
-        className="bg-black w-full md:w-[15%] mx-16 text-white font-semibold px-8 py-2 md:text-xl text-lg"
+        className="bg-black w-full md:w-[15%] mx-16 text-white font-semibold px-8 py-2 md:text-xl text-lg rounded-lg"
       >
         Create
       </button>
