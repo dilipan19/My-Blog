@@ -18,7 +18,10 @@ const connectDB=async()=>{
 //Middlewares
 app.use(express.json());
 dotenv.config();
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173', // Specify your frontend origin
+  credentials: true, // Allow credentials (cookies, headers, etc.)
+}));
 app.use("/api",authRoute);
 app.use("/api",postRoute);
 

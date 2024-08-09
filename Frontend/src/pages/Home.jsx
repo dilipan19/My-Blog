@@ -18,8 +18,8 @@ const Home = () => {
   const [noResults,setNoResults]=useState(false)
   const [loader, setLoader]=useState(true)
   const {user}=useContext(UserContext)
-  //console.log(user)
-  console.log(posts,"sd");
+  console.log(user)
+  console.log(posts,'sd');
   
 
   const fetchPosts=async()=>{
@@ -27,7 +27,7 @@ const Home = () => {
     try{
       
       const res=await axios.get(URL+"/api/posts")
-      //console.log(res.data)
+      console.log(res.data)
       setPosts(res.data)
       if(res.data.length){
         setNoResults(true)

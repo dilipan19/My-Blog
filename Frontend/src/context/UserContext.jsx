@@ -3,11 +3,11 @@ import {  createContext, useEffect, useState } from "react";
 import { URL } from "../url";
 
 
-export const UserContext=createContext()
+export const UserContext=createContext({})
 
 export function UserContextProvider ({children}) {
-    const [user, setUser]=useState("null")
-    console.log(user,"s");
+    const [user, setUser]=useState(null)
+    console.log(user);
     
 
     useEffect(()=> {
@@ -16,9 +16,9 @@ export function UserContextProvider ({children}) {
 
     const getUser=async()=> {
         try{
-            // const res=await axios.get(URL+"/api/fetch",{withCredentials:true})
-            //console.log(res.data)
-            setUser("res.data")
+           // const res=await axios.get(URL+"/api/refetch",{withCredentials:true})
+           // console.log(res.data)
+           // setUser(res.data)
         }
         catch(err){
             console.log(err)

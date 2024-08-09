@@ -26,7 +26,7 @@ const PostDetails = () => {
 
         try{
             const res= await axios.get(URL+"/api/posts/" + postId)
-            //console.log(res.data)
+            console.log(res.data)
             setPost(res.data)
             
         }
@@ -37,16 +37,26 @@ const PostDetails = () => {
 
     } 
 
-    const handleDeletePost=async ()=>{
-        try{
-            const res=await axios.delete(URL+"/api/posts/"+postId)
-            console.log(res.data)
-            navigate("/")
+    const handleDeletePost = async () => {
+        try {
+            const token = localStorage.getItem('authToken');
+            if (!token) {
+                console.log("No token found");
+                return;
+            }
+    
+            const config = {
+                headers: { 'Authorization': `${token}` },
+            };
+    
+            const res = await axios.delete(URL + "/api/posts/" + postId, config);
+            console.log(res.data);
+            navigate("/");
+        } catch (err) {
+            console.log("Error deleting post:", err);
         }
-        catch(err){
-            console.log(err)
-        }
-    }
+    };
+    
 
     useEffect(()=>{
         fetchPosts()
@@ -60,6 +70,7 @@ const PostDetails = () => {
             <div className="flex   justify-between items-center">
                 <h1 className="text-2xl font-bold text-black md:text-3xl"> 
                     {post.title}
+                    {}
                 </h1>
                 {user?._id===post?.userId && <div className="flex items-center justify-center space-x-2">
                     <p className="cursor-pointer" onClick={()=>navigate("/edit/"+postId)}><BiEdit/></p>
@@ -68,16 +79,13 @@ const PostDetails = () => {
                           
             </div>
             <div className="flex items-center justify-between md:mt-4">
-            <p>@{post.username}</p>
-               <div className="flex space-x-2">
-               <p> {new Date(post.updatedAt).toString().slice(0,15)} </p>
-               <p>{new Date(post.updatedAt).toString().slice(16,24)}</p>
-                </div>
+            <p>{post.content}</p>
+               
             </div>  
                 
             <p className="mx-auto mt-8">{post.desc}</p>
             <div className="flex items-center mt-8 space-x-4 font-semibold">
-                <p>Categories:</p>
+                
                 <div className="flex justify-center items-center space-x-2">
                     {post.categories?.map((c,i)=>(
                         <>
@@ -89,10 +97,7 @@ const PostDetails = () => {
                    
                 </div>
             </div>
-            <div className="w-full flex flex-col mt-4 md:flex-row">
-                <input type="text" placeholder="write your comment.." className="md:w-[80%] outline-none py-2 px-4 mt-4 md:mt-0 "/>
-                <button className="bg-black text-sm text-white px-4 py-2 md:w-[20%] mt-4 md:mt-0">Add comment</button>
-            </div>
+            
         </div>}
         
     </div>

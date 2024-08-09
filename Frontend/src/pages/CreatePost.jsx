@@ -8,13 +8,14 @@ import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
+  const [content, setContent] = useState("");
   const { user } = useContext(UserContext);
   const [cat, setCat] = useState("");
   const [cats, setCats] = useState([]);
 
   const navigate = useNavigate();
 
+ 
   useEffect(() => {
     const token = localStorage.getItem('authToken');
     console.log("Token in CreatePost useEffect:", token);
@@ -37,8 +38,8 @@ const CreatePost = () => {
     e.preventDefault();
     const post = {
       title,
-      desc,
-      categories: cats // Include categories if necessary
+      content,
+
     };
 
     try {
@@ -51,16 +52,16 @@ const CreatePost = () => {
       console.log("Retrieved Token:", token);
 
       const config = {
-        headers: { 'Authorization': `Bearer ${token}` }
-       
+        headers: { 'Authorization': `${token}` },
+        
       };
-      console.log(config);
+      console.log(post)
 
-      const res = await axios.post(URL + "/api/posts/", post, config);
+      const res = await axios.post(URL + "/api/posts", post, config);
       navigate("/posts/post/" + res.data._id);
       console.log("Post created successfully:", res.data);
-    } catch (err) {
-      console.error("Error creating post:", err);
+    } catch (error) {
+      console.error("Error creating post:", error);
     }
   };
 
@@ -79,12 +80,13 @@ const CreatePost = () => {
         </form>
       </div>
       <textarea
-        onChange={(e) => setDesc(e.target.value)}
+        onChange={(e) => setContent(e.target.value)}
         rows={10}
         cols={60}
         className="px-4 py-2 outline-none mt-5 mx-48 bg-black text-white rounded"
         placeholder="Enter post description"
       />
+      
       <button
         onClick={handleCreate}
         className="bg-black w-full md:w-[15%] mx-16 text-white font-semibold px-8 py-2 md:text-xl text-lg"

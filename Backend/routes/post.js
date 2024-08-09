@@ -1,22 +1,36 @@
 const express = require('express');
 const router = express.Router();
-//const User = require('../models/user');
+const User = require('../models/user');
 //const bcrypt = require('bcrypt');
 const Post = require("../models/Post");
 const verifyToken = require("../verifyToken");
 
 
-//CREATE
-router.post("/posts",verifyToken,async(req,res)=>{
-try {
-  const newPost = new Post({ ...req.body, author: req.user.id })
-  const savedPost = await newPost.save();
-  res.status(200).json(savedPost)
-  
-} catch (error) {
-  res.status(500).json(error);
-}
-})
+//CREATE 
+router.post("/posts", verifyToken, async (req, res) => { 
+  try { 
+     
+    const newPost = new Post({ ...req.body, author: req.user.id }); 
+     
+     
+    const savedPost = await newPost.save(); 
+     
+     
+    const user = await User.findById(req.user.id).select('username'); 
+ 
+     
+    const postWithUsername = { 
+      ...savedPost._doc,  
+      username: user.username 
+    }; 
+    console.log(postWithUsername) 
+
+    // Send the response 
+    res.status(200).json(postWithUsername); 
+  } catch (error) { 
+    res.status(500).json(error); 
+  } 
+});
 
 //UPDATE
 router.put("/posts/:id",verifyToken,async(req,res)=>{
